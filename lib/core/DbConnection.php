@@ -3,9 +3,13 @@
 namespace lib\core;
 
 define('HOST', 'localhost');
+//define('HOST', 'mysql.hostinger.fr');
 define('USER', 'root');
+//define('USER', 'u606094034_root');
 define('PASS', 'root');
+//define('PASS', 'RbNER|`u!^OeQK*7[c');
 define('DB', 'maxime');
+//define('DB', 'u606094034_maxim');
 define('DRIVER', 'mysql');
 
 use Doctrine\ORM\Tools\Setup;
