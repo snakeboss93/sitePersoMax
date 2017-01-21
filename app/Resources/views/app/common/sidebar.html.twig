@@ -1,8 +1,0 @@
-{% extends ':app:layout_empty.html.twig' %}
-
-{% block main_content %}
-    <nav id="main-nav" class="main-nav">
-        <h2 class="sr-only">{{ 'app.common.sidebar.h2'|trans }}</h2>
-        {{ knp_menu_render('main', {'currentClass': 'active'}) }}
-    </nav>
-{% endblock %}
