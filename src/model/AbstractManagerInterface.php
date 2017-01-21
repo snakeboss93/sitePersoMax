@@ -47,4 +47,11 @@ interface AbstractManagerInterface
      * @param $object
      */
     public function update($object);
+
+    /**
+     * Permet de supprimer un objet.
+     *
+     * @param $object
+     */
+    public function delete($object);
 }

@@ -10,9 +10,12 @@ use Doctrine\ORM\Mapping as ORM;
 trait IdTrait
 {
     /**
-     * @Id @Column(type="integer")
-     * @GeneratedValue
-     * @var int $id
+     * Identifiant unique.
+     *
+     * @var int
+     * @Id
+     * @Column(type="integer")
+     * @GeneratedValue(strategy="AUTO")
      */
     protected $id;
 

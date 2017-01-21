@@ -7,8 +7,6 @@ use lib\core\DbConnection;
 
 /**
  * abstract Class AbstractManager
- *
- * @author Pierre PEREZ
  */
 abstract class AbstractManager implements AbstractManagerInterface
 {
@@ -64,6 +62,17 @@ abstract class AbstractManager implements AbstractManagerInterface
     public function update($object)
     {
         $this->em->merge($object);
+        $this->em->flush();
+    }
+
+    /**
+     * Permet de supprimer un objet.
+     *
+     * @param object $object
+     */
+    public function delete($object)
+    {
+        $this->em->remove($object);
         $this->em->flush();
     }
 }
