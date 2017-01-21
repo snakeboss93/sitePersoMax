@@ -1,0 +1,49 @@
+{% if data is defined %}
+
+    {% set villeNom = data.ville is not null ? data.ville.nom : '' %}
+    {% set dossierSelectionne = data.dossier is not null %}
+
+    <div class="card {% if dossierSelectionne %}isSelected{% endif %}">
+        <div class="card-image">
+            <a href="{{ url('terrain.modifier', {id: data.id}) }}">
+                {% if data.pictureUploadPath is not null %}
+                    <img src="{{ data.pictureUploadPath | imagine_filter('terrain_pictures') }}" alt="{{ data.title }}"
+                         width="400" height="267">
+                {% else %}
+                    <img src="{{ asset('images/750x502.png') }}" width="750" height="502" alt="Aucune image pour le moment"/>
+                {% endif %}
+                <span class="card-title">
+                    {{ data.ville.nom }}
+                </span>
+            </a>
+        </div>
+        <div class="card-content">
+            <div class="card-action">
+                {% if hideCheckbox == false %}
+                    {{ include(':app/_partial/common:checkbox.html.twig', {data: data}) }}
+                {% endif %}
+            </div>
+            <div class="card-description">
+                <p>
+                    <span class="card-description-terrain-prix">{{ data.prix|default_money_format(0) }}</span>
+                    -
+                    <span class="card-description-terrain-superficie">
+                        {{ data.superficie|default_number_format()|raw }}&nbsp;m<sup>2</sup>
+                    </span>
+                </p>
+                <p>
+                    <span class="card-description-createdAt">{{ data.createdAt|localizeddate('short', 'none') }}</span>
+                    <br/>
+                    <span class="card-description-utilisateurAttribution">{{ data.utilisateurAttribution.fullName }}</span>
+                </p>
+            </div>
+            <div class="card-extra-action">
+                {% if hideCheckbox %}
+                <div class="btn-group">
+                    {# Button delete #}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endif %}

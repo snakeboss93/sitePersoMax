@@ -1,0 +1,40 @@
+{% extends standalone ? ':app:layout_empty.html.twig' : ':app:layout_main.html.twig' %}
+
+{% set prefix = 'guide-graphique' %}
+{% set title = 'Guide graphique' %}
+
+{% block title %}{{ title }} - {{ parent() }}{% endblock %}
+{% block main_header_title %}{{ main_header_title(title, icone_menu_guidegraphique(true)) }}{% endblock %}
+{% block body_class %}{{ parent() }} {{ prefix }} {% endblock %}
+
+{% block main_content %}
+    <ul class="nav nav-pills" role="tablist">
+        <li role="presentation" class="active"><a href="#boutons" aria-controls="boutons" role="tab" data-toggle="tab">Boutons</a></li>
+        <li role="presentation"><a href="#liens" aria-controls="liens" role="tab" data-toggle="tab">Liens</a></li>
+        <li role="presentation"><a href="#icones" aria-controls="icones" role="tab" data-toggle="tab">Icônes</a></li>
+        <li role="presentation"><a href="#tableaux" aria-controls="tableaux" role="tab" data-toggle="tab">Tableaux</a></li>
+        <li role="presentation"><a href="#forms" aria-controls="forms" role="tab" data-toggle="tab">Formulaires</a></li>
+        <li role="presentation"><a href="#divers" aria-controls="divers" role="tab" data-toggle="tab">Divers</a></li>
+    </ul>
+
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="boutons">
+            {{ include(':app/tableau_de_bord/guide_graphique:_buttons_model.html.twig') }}
+        </div>
+        <div role="tabpanel" class="tab-pane" id="liens">
+            {{ include(':app/tableau_de_bord/guide_graphique:_links_model.html.twig') }}
+        </div>
+        <div role="tabpanel" class="tab-pane" id="icones">
+            {{ include(':app/tableau_de_bord/guide_graphique:_icons_model.html.twig') }}
+        </div>
+        <div role="tabpanel" class="tab-pane" id="tableaux">
+            {{ include(':app/tableau_de_bord/guide_graphique:_tables_model.html.twig') }}
+        </div>
+        <div role="tabpanel" class="tab-pane" id="forms">
+            {{ include(':app/tableau_de_bord/guide_graphique:_forms_model.html.twig') }}
+        </div>
+        <div role="tabpanel" class="tab-pane" id="divers">
+            {{ include(':app/tableau_de_bord/guide_graphique:_divers_model.html.twig') }}
+        </div>
+    </div>
+{% endblock %}

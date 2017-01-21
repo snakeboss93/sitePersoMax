@@ -1,0 +1,57 @@
+{% if data is defined %}
+
+    {% set villeNom = data.terrain.ville is not null ? data.terrain.ville.nom : '' %}
+
+    <div class="card" id="annonce-{{ data.id }}">
+        <div class="card-image">
+            {% if data.terrain.pictureUploadPath is not null %}
+                <img src="{{ data.terrain.pictureUploadPath | imagine_filter('terrain_pictures') }}"
+                     alt="{{ villeNom }}"/>
+            {% else %}
+                <img src="{{ asset('images/750x502.png') }}" width="750" height="502"
+                     alt="Aucune image pour le moment"/>
+            {% endif %}
+            <span class="card-title">
+                {{ icone_menu_annonces() }}
+                {{ villeNom }}
+            </span>
+        </div>
+        <div class="card-content">
+            <div class="card-description">
+                <p>
+                    <span class="card-description-terrain-prix">
+                        {{ data.terrain.prix|default_number_format()|raw }}&nbsp;&euro;
+                    </span>
+                    -
+                    <span class="card-description-terrain-superficie">
+                        {{ data.terrain.superficie|default_number_format()|raw }}&nbsp;m<sup>2</sup>
+                    </span>
+                </p>
+
+                <p>
+                    <span class="card-description-createdAt">{{ data.terrain.createdAt|localizeddate('long', 'none') }}</span>
+                </p>
+
+                <p>
+                    <span class="card-description" data-toggle="tooltip" data-placement="top"
+                          title="{{ data.terrain.agenceActuelle.nomInterneAvecTrigramme }} / {{ data.terrain.utilisateurAttribution.fullName }}">
+                        {{ data.terrain.agenceActuelle.trigramme }} / {{ data.terrain.utilisateurAttribution.trigramme }}
+                    </span>
+                </p>
+
+                {% for site in data.sites %}
+                    <span class="label label-primary">{{ annonce_site_get_nom(site) }}</span>
+                {% endfor %}
+
+            </div>
+            <div class="card-extra-action">
+                {#{% if is_granted(constant('App\\Model\\AnnonceSite\\AnnonceSite::ACTION_MODIFIER'), data) %}#}
+                <div class="btn-group">
+                    {{ button_edit(null, 'edit', null, icone_modifier(true), false, 'button', false, 'myModal'~data.id) }}
+                </div>
+                {#{% endif %}#}
+            </div>
+
+        </div>
+    </div>
+{% endif %}

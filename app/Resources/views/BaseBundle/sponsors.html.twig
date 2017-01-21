@@ -1,0 +1,77 @@
+{% extends 'layout.html.twig' %}
+
+{% block og %}
+    <meta property="og:title" content="Sponsors 4erudition"/>
+    <meta property="og:url" content="http://4erudition.fr/sponsors"/>
+    <meta property="og:description"
+          content="Cette page liste tous les sponsors qui participent avec nous à cette formidable aventure qu'est le 4L Trophy."/>
+{% endblock %}
+
+{% block keys %}4 erudition, for erudition, Trophy, erudition, 4l trophy, 4l, sponsors, sponsoring, aventure, 4 érudition{% endblock %}
+
+{% block title %}Sponsoring | 4Erudition{% endblock %}
+
+{% block Description %}Cette page liste tous les sponsors qui participent avec nous à cette formidable aventure qu'est le 4L Trophy.{% endblock %}
+
+{% block Lsponsors %}class="active"{% endblock %}
+
+{% block h1 %}Sponsors de 4erudition pour la participation au 4l trophy 2017{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="section">
+            <div class="row center">
+                <div class="col s12 m12 l10 offset-l1">
+                    <h2 class="center brown-text">Nos Sponsors</h2>
+
+                    <div class="divider"></div>
+
+                    <div class="section">
+                        <h3 class="center brown-text">Entreprises</h3>
+
+                        <p class="flow-text">
+                            Vous voulez devenir notre sponsor :
+                        </p>
+                        <a href="{{ path('formulaire') }}" class="waves-effect waves-light btn amber darken-2 ">
+                            Contactez nous</a>
+                    </div>
+
+                    <div class="divider"></div>
+
+                    <div class="section">
+                        <h3>
+                            <a class="blue-grey-text" target="_blank" href="http://www.aroban.com" id="aroban">
+                                <img    class="responsive-img"
+                                        src="{{ asset('img/sponsors/arobanTitre.png') }}"
+                                        width="400"
+                                        height="138"
+                                        alt="logo Aroban">
+                            </a>
+                        </h3>
+
+                        <p class="left-align flow-text">
+                            Aroban est une société qui développe des sites web pour entreprise ou collectivité.
+                        </p>
+                        <p class="left-align flow-text">
+                            Ils nous ont aider en hébergeant notre site ainsi qu'en nous donnant de précieux
+                            conseils pour la conception du site.
+                        </p>
+                        <p class="left-align">
+                            Aroban <br/>
+                            Adresse : 28 Rue des Teinturiers,<br/>
+                            84000 Avignon<br/>
+                            Téléphone : 04 32 76 23 60<br/>
+                        </p>
+                        <a class="blue-grey-text" target="_blank" href="http://www.aroban.com">Plus de renseignement sur leur site : Cliquez ici</a>
+                    </div>
+
+                    <div class="divider"></div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

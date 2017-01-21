@@ -1,0 +1,31 @@
+
+{% for unArticle in article %}
+    <div class="section">
+        <h3 class="center orange-text">{{ unArticle.titre }}</h3>
+
+{#Faire un if et ajouter les donner necessaire au formulaire (alt / tialme img / url /... #}
+        <a class="grey-text" target="_blank" href="{{ unArticle.lienImage }}">
+            <img class="responsive-img" src="/img/uploads/{{ unArticle.image }}" height="{{ unArticle.heightImage }}" width="{{ unArticle.widthImage }}"
+                 alt="{{ unArticle.altImage }}">
+        </a>
+
+        <p class="left-align">{{ unArticle.date }}</p><p class="right-align">{{ unArticle.categorie }}</p>
+        <p class="left-align flow-text">
+            {{ unArticle.texte }}
+        </p>
+        <p class="left-align flow-text">
+            {{ unArticle.accompagnement }}
+        </p>
+        {% if unArticle.categorie == 'Partenaires / Sponsors' %}
+        <p class="left-align">
+            <br/> Adresse : {{ unArticle.adresse }}
+            <br/> Téléphone : {{ unArticle.tel }}
+        </p>
+        {% endif %}
+        {% if unArticle.categorie == 'Partenaires / Sponsors' %}
+            <a class="blue-grey-text" target="_blank" href="{{ unArticle.lienImage }}">Plus de renseignement sur leur site : Cliquez ici</a>
+        {% endif %}
+    </div>
+
+    <div class="divider"></div>
+{% endfor %}

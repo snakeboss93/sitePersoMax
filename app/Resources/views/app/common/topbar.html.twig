@@ -1,0 +1,99 @@
+{% extends ':app:layout_empty.html.twig' %}
+
+{% set hasRoleTransverse = app.session.get('hasRoleTransverse') %}
+
+{% block main_content %}
+    <nav id="topbar" class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="{{ url('tableau_de_bord') }}">
+                    <img src="{{ asset('logo.png') }}" width="200" height="40" alt="{{ 'application.title'|trans }}"/>
+                </a>
+                <button class="toggle-sidebar" type="button">
+                    <span class="toggle-bar"></span>
+                    <span class="toggle-bar"></span>
+                    <span class="toggle-bar"></span>
+                </button>
+                <div class="topbar-title">
+                    <h2>{{ topbarTitle|raw }}</h2>
+                </div>
+            </div>
+            <ul id="userMenu" class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">
+                        <span class="user-info">
+                            <span class="user-img">
+                                {% if app.user.profilePicturePath is not null %}
+                                    <img src="{{ app.user.profilePicturePath | imagine_filter('user_profile') }}"
+                                         alt="{{ 'app.profile_picture.alt'|trans }}" width="36" height="36">
+                                {% else %}
+                                    {{ icone_menu_utilisateurs() }}
+                                {% endif %}
+                            </span>
+                            <span class="user-name">
+                                <span class="first-name">{{ app.user.prenom }}</span>
+                                <span class="last-name">{{ app.user.nom }}</span>
+                            </span>
+                            <span class="user-agency">
+                                {% if agence is not null and hasRoleTransverse == false %}
+                                    <span class="user-agency-name">{{ agence.nomInterne }}</span> (<span
+                                        class="user-company-name">{{ agence.societe.trigramme }}</span>)
+                                {% endif %}
+                            </span>
+                        </span>
+                        <span class="dropdown-icon">
+                            {{ icone_angle_down() }}
+                        </span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-header">
+                            <span class="user-info">
+                                <span class="user-img">
+                                    {% if app.user.profilePicturePath is not null %}
+                                        <img src="{{ app.user.profilePicturePath | imagine_filter('user_profile') }}"
+                                             alt="{{ 'app.profile_picture.alt'|trans }}" width="36" height="36">
+                                    {% else %}
+                                        {{ icone_menu_utilisateurs() }}
+                                    {% endif %}
+                                </span>
+                                <span class="user-name">
+                                    <span class="first-name">{{ app.user.prenom }}</span>
+                                    <span class="last-name">{{ app.user.nom }}</span>
+                                </span>
+                                <span class="user-agency">
+                                    {% if agence is not null and hasRoleTransverse == false %}
+                                         <span class="user-agency-name">{{ agence.nomInterne }}</span> (<span
+                                             class="user-company-name">{{ agence.societe.trigramme }}</span>)
+                                     {% endif %}
+                                </span>
+                            </span>
+                        </li>
+                        {% if mustBeAccessToSwitchAgence %}
+                            <li>
+                                <a href="#" data-toggle="modal" data-target="#switchAgency">
+                                    {{ icone_menu_agences() }}<span>{{ 'app.common.topbar.switchAgency'|trans }}</span>
+                                </a>
+                            </li>
+                        {% endif %}
+                        {% if is_granted('ROLE_PREVIOUS_ADMIN') %}
+                            <li class="logout">
+                                <a href="{{ path('utilisateur.liste', {'_switch_user': '_exit'}) }}">
+                                    {{ icone_deconnexion() }}
+                                    <span>{{ 'logout.switch'|trans }}</span>
+                                </a>
+                            </li>
+                        {% else %}
+                            <li class="logout">
+                                <a href="{{ path('fos_user_security_logout') }}">
+                                    {{ icone_off() }}<span>{{ 'logout'|trans }}</span>
+                                </a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    {% include ':app/modals:switch_agence.html.twig' %}
+{% endblock %}

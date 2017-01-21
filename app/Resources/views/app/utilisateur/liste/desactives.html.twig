@@ -1,0 +1,186 @@
+{% extends ':app/utilisateur:liste.html.twig' %}
+
+{% set title = 'app.utilisateur.listeDesactives.title'|trans %}
+{% set prefix = 'utilisateur' %}
+{% set action = 'liste-desactives' %}
+{% set currentPath = path(app.request.get('_route')) %}
+{% set currentOrder = app.request.get('_route_params') %}
+
+{% block title %}{{ title }} - Page {{ pager.currentPage }} - {{ parent() }}{% endblock %}
+{% block main_header_title %}{{ main_header_title(title, icone_menu_utilisateurs(true), pager.nbResults) }}{% endblock %}
+{% block body_class %}{{ parent() }} {{ prefix }} {{ prefix }}-{{ action }}{% endblock %}
+
+{% set displayColumnAction = false %}
+{% set colspanNoResult = 5 %}
+{% if isActionAllowed('UTILISATEUR:MODIFIER') or isActionAllowed('UTILISATEUR:DESACTIVER') %}
+    {% set displayColumnAction = true %}
+    {% set colspanNoResult = 4 %}
+{% endif %}
+
+{% block main_title %}
+    {{ include(':app/utilisateur/liste:headerNav.html.twig', {'currentRoute': app.request.get('_route')}) }}
+{% endblock %}
+{% block main_extra %}
+    {{ link_add(path('utilisateur.creer')) }}
+{% endblock %}
+
+{% block main_content %}
+
+    <div class="pagerfanta">
+        {% if pager is not null and pager.haveToPaginate %}
+            {{ pagerfanta(pager, 'twitter_bootstrap3_translated', {routeName: app.request.get("_route"), routeParams: { "orderBy": app.request.get("orderBy") }} ) }}
+        {% endif %}
+    </div>
+    <div class="table-utilisateur-liste table-responsive">
+        <table class="table table-striped table-hover table-layout-4">
+            <thead>
+            <tr>
+                <th scope="col" class="table-col-main">
+                    <div class="sortable">
+                        <span>Utilisateur</span>
+                        {{ link_sortable('prenom') }}
+                    </div>
+                </th>
+                <th scope="col">
+                    <div class="sortable">
+                        {{ 'app.email.label'|trans }}
+                        {{ link_sortable('email') }}
+                    </div>
+                </th>
+                <th scope="col">
+                    <div class="sortable">
+                        {{ 'app.fonction.label'|trans }}
+                        {{ link_sortable('fonction') }}
+                    </div>
+                </th>
+                <th scope="col">
+                    <div class="sortable">
+                        {{ 'app.utilisateur.liste.lastLogin'|trans }}
+                        {{ link_sortable('lastLogin') }}
+                    </div>
+                </th>
+                {% if displayColumnAction %}
+                    <th scope="col" class="table-col-extra"></th>
+                {% endif %}
+            </tr>
+            </thead>
+            <tbody>
+
+            {% for data in pager %}
+                <tr>
+                    <td class="table-col-main">
+                        <div class="user-info">
+                            <span class="user-img">
+                                {% if data.profilePicturePath is not null %}
+                                    <img src="{{ data.profilePicturePath | imagine_filter('user_profile') }}" alt=""
+                                         width="36" height="36">
+                                {% else %}
+                                    {{ icone_menu_utilisateurs() }}
+                                {% endif %}
+                            </span>
+                            <span class="user-name">
+                                <span class="data-utilisateur data-title">
+                                    {{ data.fullName }}
+                                    {% if data.googleId is not null %}
+                                        <span class="badge badge-danger">{{ icone_google() }}</span>
+                                    {% endif %}
+                                </span>
+                            </span>
+                            <div class="user-telephone">
+                                {% if data.numeroTelephone is not null %}
+                                    <span class="data-telephone">{% spaceless %}
+                                        {{ link_appel( data.numeroTelephone) }}&nbsp;
+                                        {% if data.raccourciTelephone is not null %}
+                                            ({{ data.raccourciTelephone }})
+                                        {% endif %}
+                                    {% endspaceless %}</span>
+                                {% endif %}
+                                {% if data.numeroMobile is not null %}
+                                    <span class="data-mobile">{% spaceless %}
+                                        {{ link_appel( data.numeroTelephone) }}&nbsp;
+                                        {% if data.raccourciMobile is not null %}
+                                            ({{ data.raccourciMobile }})
+                                        {% endif %}
+                                    {% endspaceless %}</span>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <span class="data-email">{{ link_email(data.email) }}</span>
+                    </td>
+                    <td>
+                        <span class="data-fonction">{{ data.fonction }}</span>
+                    </td>
+                    <td>
+                        <span class="data-datetime">
+                            {% if data.lastLogin is not null %}
+                                {{ data.lastLogin|date('d/m/Y H:i:s') }}
+                            {% else %}
+                                -
+                            {% endif %}
+                        </span>
+                    </td>
+                    {% if displayColumnAction %}
+                        <td class="table-col-extra">
+                            <div class="btn-group">
+                                {% if isActionAllowed('UTILISATEUR:MODIFIER') %}
+                                    {{ link_edit(path('utilisateur.edit', {id: data.id}), null, true) }}
+                                {% endif %}
+                                {% if isActionAllowed('UTILISATEUR:DESACTIVER') %}
+                                    {{ button_enable('modalEnable'~data.id) }}
+                                {% endif %}
+                            </div>
+                        </td>
+                    {% endif %}
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="{{ colspanNoResult }}" class="no-result">
+                        {{ 'app.utilisateur.liste.noresult'|trans }}
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="pagerfanta">
+        {% if pager is not null and pager.haveToPaginate %}
+            {{ pagerfanta(pager, 'twitter_bootstrap3_translated', {routeName: app.request.get("_route"), routeParams: { "orderBy": app.request.get("orderBy") }} ) }}
+        {% endif %}
+    </div>
+{% endblock %}
+
+{% block body_end %}
+    {% if isActionAllowed('UTILISATEUR:DESACTIVER') %}
+        {% for data in pager %}
+            <div class="modal fade" id="modalEnable{{ data.id }}" tabindex="-1" role="dialog"
+                 aria-labelledby="modalEnable{{ data.id }}">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header bg-success">
+                            <button type="button" class="close" data-dismiss="modal"
+                                    aria-label="{{ 'action.close'|trans }}">
+                                <span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title"
+                                id="modalLabelEnable{{ data.id }}">{{ 'app.utilisateur.listeDesactives.modalLabelEnable'|trans }}</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p class="text-success">
+                                {{ 'app.utilisateur.listeDesactives.modalBody.text1'|trans }} <b>{{ data.fullname }}</b>
+                                ?<br/>
+                            </p>
+                        </div>
+                        <div class="modal-footer">
+                            {{ form_start(attribute(enableForms, data.id)) }}
+                            {{ form_rest(attribute(enableForms, data.id)) }}
+                            {{ button_cancel(true) }}
+                            {{ button_register('submit'~data.id) }}
+                            {{ form_end(attribute(enableForms, data.id)) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endblock body_end %}

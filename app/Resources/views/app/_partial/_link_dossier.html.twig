@@ -1,0 +1,6 @@
+{% if data.id is defined and data.numero is defined and data.realOperation is defined %}
+    <a href="{{ url('dossier.view', {id: data.id}) }}" class="data-dossier">
+        <span class="data-numero">{{ data.numero }}</span>
+        <span class="data-operation-type">{{ data.realOperation }}</span>
+    </a>
+{% endif %}

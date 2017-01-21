@@ -1,0 +1,16 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+    <div class="row center">
+        <h1>Page non trouvée</h1>
+
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            {# ... #}
+        {% endif %}
+
+        <p>
+            La page que vous chercher est introuvable
+            <a href="{{ path('index') }}">cliquez ici pour retrourner sur l'index</a>.
+        </p>
+    </div>
+{% endblock %}

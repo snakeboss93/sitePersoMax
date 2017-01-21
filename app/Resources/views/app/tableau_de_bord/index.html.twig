@@ -1,0 +1,12 @@
+{% extends standalone ? ':app:layout_empty.html.twig' : ':app:layout_main.html.twig' %}
+
+{% set prefix = 'tableau-de-bord' %}
+{% set title = 'app.tableau_de_bord.index.title'|trans %}
+
+{% block title %}{{ title }} - {{ parent() }}{% endblock %}
+{% block main_header_title %}{{ main_header_title(title, icone_menu_tableaudebord(true)) }}{% endblock %}
+{% block body_class %}{{ parent() }} {{ prefix }} {% endblock %}
+
+{% block main_content %}
+    {{ include(':app/tableau_de_bord:temp.html.twig') }}
+{% endblock %}

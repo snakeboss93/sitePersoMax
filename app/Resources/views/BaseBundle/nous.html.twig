@@ -1,0 +1,119 @@
+{% extends 'layout.html.twig' %}
+
+{% block og %}
+    <meta property="og:title" content="Notre Equipe 4erudition"/>
+    <meta property="og:url" content="http://4erudition.fr/equipage"/>
+    <meta property="og:description" content="Description des membres de l'association 4erudition, PEREZ Pierre et PARDINI Maxime, futurs participants au 4L Trophy.
+    Informations sur la voiture qui nous accompagnera pour cette aventure."/>
+{% endblock %}
+
+{% block keys %}4 erudition, for erudition, Trophy, erudition, 4l trophy, 4l, equipage, equipe, pierre, 4 érudition{% endblock %}
+
+{% block title %}Notre Equipage | 4Erudition{% endblock %}
+
+{% block Description %}Description des membres de l'association 4erudition, PEREZ Pierre et PARDINI Maxime, futurs participants au 4L Trophy.
+    Informations sur la voiture qui nous accompagnera pour cette aventure.{% endblock %}
+
+{% block Lnous %}class="active"{% endblock %}
+
+{% block h1 %}Présentation de Pierre et Maxime pour la participation au 4l trophy 2017{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="section">
+            <div class="row center">
+                <div class="col s12 m12 l12">
+                    <h2 class="center brown-text">Notre présentation</h2>
+                    <div class="divider"></div>
+
+                    <div class="heightTxtMinCard">
+
+                        <div class="col s12 m6 l6 offset-m3">
+                            <div class="card">
+                                <div class="card-image">
+                                    <img class="img-responsive" src="{{ asset('img/max.png') }}"
+                                         alt="photo Maxime">
+                                    <span class="card-title brown-text">Maxime</span>
+                                </div>
+                                <div class="card-content ">
+                                    <p class="left-align flow-text">
+                                        <strong>Maxime PARDINI, 22 ans</strong>
+                                    </p>
+                                    <br/>
+                                    <p class="left-align flow-text">
+                                        <strong>Cursus :</strong> Ingénieur en génie industriel en apprentissage
+                                    </p>
+                                    <br/>
+                                    <br/>
+                                    <p class="left-align flow-text">
+                                        Ecole d'ingénieur du Conservatoire National des Arts et Métiers (CNAM)
+                                    </p>
+                                    <br/>
+                                    <br/>
+                                    <p class="left-align flow-text blockquote">
+                                        Je n’avais pas les moyens d’aller dans de grandes écoles, mais le
+                                        système scolaire français me permet malgré tout d’avoir ma chance. C’est cette
+                                        même
+                                        chance que je veux donner à des enfants lors du 4L Trophy.
+                                    </p>
+                                    <br/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col s12 m6 l6 offset-m3">
+                            <div class="card">
+                                <div class="card-image">
+                                    <img class="img-responsive" src="{{ asset('img/pierre.png') }}"
+                                         alt="photo Pierre">
+                                    <span class="card-title brown-text">Pierre</span>
+                                </div>
+                                <div class="card-content">
+                                    <p class="left-align flow-text">
+                                        <strong>Pierre PEREZ, 23 ans</strong>
+                                    </p>
+                                    <br/>
+                                    <p class="left-align flow-text">
+                                        <strong>Cursus :</strong> Troisième année de Licence Informatique en apprentissage
+                                    </p>
+                                    <br/>
+                                    <p class="left-align flow-text">
+                                        Université d'Avignon et des pays du Vaucluse, Centre d'Enseignement et de
+                                        Recherche Informatique (CERI)
+                                    </p>
+                                    <br/>
+                                    <p class="left-align flow-text blockquote">
+                                        Le 4L Trophy, je le vois comme une aventure où chaque seconde
+                                        nous devons nous dépasser, aller au-delà de nos limites. De
+                                        plus, nous avons l’occasion de participer à une formidable solidarité.
+                                        C’est une aventure qui est humaine et j’ai souvent lu : le 4l
+                                        Trophy, on ne le décrit pas, on le vit ! Alors, à mon tour de vivre
+                                        cette incroyable odyssée.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col s12 m6 l6 offset-m3 offset-l3">
+                        <div class="card">
+                            <div class="card-image">
+                                <img class="img4L responsive-img" src="{{ asset('img/background3.jpg') }}" height="1000"
+                                     width="1654"
+                                     alt="Notre 4L (dessin)">
+                                <span class="card-title brown-text">Notre 4L</span>
+                            </div>
+                            <div class="card-content">
+                                <p></p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}

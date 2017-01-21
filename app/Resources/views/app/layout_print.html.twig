@@ -1,0 +1,31 @@
+{#<!DOCTYPE html>#}
+{#<html lang="fr">#}
+{#<head>#}
+    {#<meta charset="utf-8">#}
+    {#<meta http-equiv="X-UA-Compatible" content="IE=edge">#}
+    {#<meta name="viewport" content="width=device-width, initial-scale=1">#}
+    {#<meta name="description" content="">#}
+    {#<meta name="author" content="">#}
+    {#<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>#}
+{##}
+    <title>{% block title %}GEREMI2{% endblock %}</title>
+    {#<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic" rel="stylesheet">#}
+    {#<link href="{{ asset('built/min.css') }}" rel="stylesheet">#}
+    {#{% block stylesheets %}{% endblock %}#}
+{#</head>#}
+{#<body class="{% block body_class %}layout-main {{ theme(app.session.get('agence')) }}{% endblock %}{% if env_saisie %} env-saisie{% endif %}">#}
+    {#{{ render(controller('AppBundle:Element:beforeClosingHead')) }}#}
+    {#{% block body_start %}{% endblock %}#}
+    {#<main id="main-content">#}
+        {#<div class="container-fluid">#}
+            {% block main_content %}{% endblock %}
+        {#</div>#}
+    {#</main>#}
+    {#{% block body_end %}#}
+    {#{% endblock %}#}
+    {#<script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>#}
+    {#<script src="{{ url('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>#}
+    {#<script src="{{ asset('built/app.min.js') }}"></script>#}
+    {#{% block javascripts %}{% endblock %}#}
+{#</body>#}
+{#</html>#}

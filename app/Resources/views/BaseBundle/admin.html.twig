@@ -1,0 +1,52 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}admin | 4Erudition{% endblock %}
+
+{% block h1 %}Admin{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="section">
+            <div class="row center">
+                <div class="col s12 m12 l10 offset-l1">
+                    <h2 class="center brown-text">Connection</h2>
+                    <hr/>
+                </div>
+            </div>
+
+            {{ form_start(form, {'attr': {'class': 'col s12'}}) }}
+            <div class="row">
+                {# Les erreurs générales du formulaire. #}
+                {{ form_errors(form) }}
+
+                <div class="input-field col s6">
+                    {# Génération du label. #}
+                    {{ form_label(form.login, "Login", {'label_attr': {'class': ''}}) }}
+                    {# Affichage des erreurs pour ce champ précis. #}
+                    {{ form_errors(form.login) }}
+                    {# Génération de l'input. #}
+                    {{ form_widget(form.login, {'attr': {'class': 'validate'}}) }}
+                </div>
+                <div class="input-field col s6">
+                    {# Génération du label. #}
+                    {{ form_label(form.pass, "Quelque Chose", {'label_attr': {'class': ''}}) }}
+                    {# Affichage des erreurs pour ce champ précis. #}
+                    {{ form_errors(form.pass) }}
+                    {# Génération de l'input. #}
+                    {{ form_widget(form.pass, {'attr': {'class': 'validate'}}) }}
+                </div>
+            </div>
+            <div class="row center">
+                <div class="input-field col s12">
+                    {{ form_widget(form.envoyer, {'attr': {'class': 'waves-effect waves-light btn'}}) }}
+                </div>
+            </div>
+            {{ form_end(form) }}
+
+        </div>
+    </div>
+
+
+
+{% endblock %}

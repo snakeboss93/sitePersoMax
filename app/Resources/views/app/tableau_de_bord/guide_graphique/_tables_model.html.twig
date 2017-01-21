@@ -1,0 +1,790 @@
+<h2>Tableaux</h2>
+<div class="alert alert-warning">
+    {{ icone_warning() }} <span>Un tableau devrait comporter <strong>4 colonnes maximum</strong> : grouper les données si nécessaire. Les colonnes annexes (sélection, actions, ...) ne sont pas comptabilisées.</span><br>
+</div>
+<div class="content-block">
+    <ul>
+        <li>Spécifier la <strong>colonne principale</strong> (<code>table-col-main</code>) et les <strong>colonnes annexes</strong> (<code>table-col-extra</code>) sur les <code>th</code> et <code>td</code>.</li>
+        <li>Si besoin, modifier l'alignement de chaque <code>td</code> à l'aide des classes Bootstrap <code>text-center</code> ou <code>text-right</code></li>
+        <li><strong>Layout automatique</strong> : spécifier sur le <code>table</code> le layout souhaité (<code>table-layout-1</code>, <code>-2</code>, <code>-3</code>, ou <code>-4</code>).</li>
+        <li><strong>Layout personnalisé</strong> : dimensionner chaque colonne <code>th</code> à l'aide des classes Bootstrap <code>col-xs-1</code>, <code>col-xs-2</code>, ..., <code>col-xs-12</code>.</li>
+    </ul>
+</div>
+
+<h3>Layout automatique 4 colonnes</h3>
+<div class="table-responsive">
+    <table class="table table-striped table-hover table-layout-4">
+        <thead>
+            <tr>
+                <th scope="col" class="table-col-main">
+                    <div class="sortable">
+                        <span class="first-name">Prénom</span> <span class="last-name">Nom</span> (Trigramme)
+                        <a href="?orderBy=prenom-ASC" title="Tri par prenom Croissant"></a>
+                    </div>
+                </th>
+                <th scope="col">
+                    <div class="sortable">
+                        Email
+                        <a href="?orderBy=email-ASC" title="Tri par email Croissant"></a>
+                    </div>
+                </th>
+                <th scope="col">
+                    <div class="sortable">
+                        Fonction
+                        <a href="?orderBy=fonction-ASC" title="Tri par fonction Croissant"></a>
+                    </div>
+                </th>
+                <th scope="col">
+                    <div class="sortable">
+                        Dernière connexion
+                        <a href="?orderBy=lastLogin-ASC" title="Tri par lastLogin Croissant"></a>
+                    </div>
+                </th>
+                <th scope="col" class="table-col-extra"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="table-col-main">
+                    <span class="user-info">
+                        <span class="user-img">
+                            {{ icone_menu_utilisateurs() }}
+                        </span>
+                        <span class="user-name">
+                            <span class="data-utilisateur data-title">Fabienne DUBOUCIS (FDU)</span>
+                        </span>
+                    </span>
+                </td>
+                <td>
+                    <span class="data-email">jm.loremipsum@masprovence.com</span>
+                </td>
+                <td>
+                    <span class="data-fonction">responsable_commercial</span>
+                </td>
+                <td>
+                    <span class="data-datetime">19/09/2016 14:41:38</span>
+                </td>
+                <td class="table-col-extra">
+                    <div class="btn-group">
+                        <a role="button" href="/app_dev.php/utilisateur/modifier/105" class="btn btn-info ">
+                            {{ icone_modifier() }}
+                        </a>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="table-col-main">
+                    <span class="user-info">
+                        <span class="user-img">
+                            {{ icone_menu_utilisateurs() }}
+                        </span>
+                        <span class="user-name">
+                            <span class="data-utilisateur data-title">Cunégonde DOLORSITAMET (CDO)</span>
+                        </span>
+                    </span>
+                </td>
+                <td>
+                    <span class="data-email">c.dolorsitamet@masprovence.com</span>
+                </td>
+                <td>
+                    <span class="data-fonction">responsable_communication</span>
+                </td>
+                <td>
+                    <span class="data-datetime">21/09/2016 09:52:56</span>
+                </td>
+                <td class="table-col-extra">
+                    <div class="btn-group">
+                        <a role="button" href="/app_dev.php/utilisateur/modifier/105" class="btn btn-info ">
+                            {{ icone_modifier() }}
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<h3>Layout automatique 3 colonnes</h3>
+<div class="table-responsive">
+    <table class="table table-striped table-hover table-layout-3">
+        <thead>
+            <tr>
+                <th scope="col" class="table-col-main">
+                    <div class="sortable">
+                        <span class="first-name">Prénom</span> <span class="last-name">Nom</span> (Trigramme)
+                        <a href="?orderBy=prenom-ASC" title="Tri par prenom Croissant"></a>
+                    </div>
+                </th>
+                <th scope="col">
+                    <div class="sortable">
+                        Email
+                        <a href="?orderBy=email-ASC" title="Tri par email Croissant"></a>
+                    </div>
+                </th>
+                <th scope="col">
+                    <div class="sortable">
+                        Fonction
+                        <a href="?orderBy=fonction-ASC" title="Tri par fonction Croissant"></a>
+                    </div>
+                </th>
+                <th scope="col" class="table-col-extra"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="table-col-main">
+                    <span class="user-info">
+                        <span class="user-img">
+                            {{ icone_menu_utilisateurs() }}
+                        </span>
+                        <span class="user-name">
+                            <span class="data-utilisateur data-title">Jean-Michel LOREMIPSUM (JML)</span>
+                        </span>
+                    </span>
+                </td>
+                <td>
+                    <span class="data-email">jm.loremipsum@masprovence.com</span>
+                </td>
+                <td>
+                    <span class="data-fonction">responsable_commercial</span>
+                </td>
+                <td class="table-col-extra">
+                    <div class="btn-group">
+                        <a role="button" href="/app_dev.php/utilisateur/modifier/105" class="btn btn-info ">
+                            {{ icone_modifier() }}
+                        </a>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="table-col-main">
+                    <span class="user-info">
+                        <span class="user-img">
+                            {{ icone_menu_utilisateurs() }}
+                        </span>
+                        <span class="user-name">
+                            <span class="data-utilisateur data-title">Cunégonde DOLORSITAMET (CDO)</span>
+                        </span>
+                    </span>
+                </td>
+                <td>
+                    <span class="data-email">c.dolorsitamet@masprovence.com</span>
+                </td>
+                <td>
+                    <span class="data-fonction">responsable_communication</span>
+                </td>
+                <td class="table-col-extra">
+                    <div class="btn-group">
+                        <a role="button" href="/app_dev.php/utilisateur/modifier/105" class="btn btn-info ">
+                            {{ icone_modifier() }}
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<h3>Layout automatique 2 colonnes</h3>
+<div class="table-responsive">
+    <table class="table table-striped table-hover table-layout-2">
+        <thead>
+            <tr>
+                <th scope="col" class="table-col-main">
+                    <div class="sortable">
+                        <span class="first-name">Prénom</span> <span class="last-name">Nom</span> (Trigramme)
+                        <a href="?orderBy=prenom-ASC" title="Tri par prenom Croissant"></a>
+                    </div>
+                </th>
+                <th scope="col">
+                    <div class="sortable">
+                        Email
+                        <a href="?orderBy=email-ASC" title="Tri par email Croissant"></a>
+                    </div>
+                </th>
+                <th scope="col" class="table-col-extra"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="table-col-main">
+                    <span class="user-info">
+                        <span class="user-img">
+                            {{ icone_menu_utilisateurs() }}
+                        </span>
+                        <span class="user-name">
+                            <span class="data-utilisateur data-title">Jean-Michel LOREMIPSUM (JML)</span>
+                        </span>
+                    </span>
+                </td>
+                <td>
+                    <span class="data-email">jm.loremipsum@masprovence.com</span>
+                </td>
+                <td class="table-col-extra">
+                    <div class="btn-group">
+                        <a role="button" href="/app_dev.php/utilisateur/modifier/105" class="btn btn-info ">
+                            {{ icone_modifier() }}
+                        </a>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="table-col-main">
+                    <span class="user-info">
+                        <span class="user-img">
+                            {{ icone_menu_utilisateurs() }}
+                        </span>
+                        <span class="user-name">
+                            <span class="data-utilisateur data-title">Cunégonde DOLORSITAMET (CDO)</span>
+                        </span>
+                    </span>
+                </td>
+                <td>
+                    <span class="data-email">c.dolorsitamet@masprovence.com</span>
+                </td>
+                <td class="table-col-extra">
+                    <div class="btn-group">
+                        <a role="button" href="/app_dev.php/utilisateur/modifier/105" class="btn btn-info ">
+                            {{ icone_modifier() }}
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<h3>Layout automatique 1 colonne</h3>
+<div class="table-responsive">
+    <table class="table table-striped table-hover table-layout-1">
+        <thead>
+            <tr>
+                <th scope="col" class="table-col-extra">
+                    <div class="checkbox2">
+                        <label>
+                            <input type="checkbox">
+                            <span class="box"></span>
+                        </label>
+                    </div>
+                </th>
+                <th scope="col" class="table-col-main">
+                    <div class="sortable">
+                        <span class="first-name">Prénom</span> <span class="last-name">Nom</span> (Trigramme)
+                        <a href="?orderBy=prenom-ASC" title="Tri par prenom Croissant"></a>
+                    </div>
+                </th>
+                <th scope="col" class="table-col-extra"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="table-col-extra">
+                    <div class="checkbox2">
+                        <label>
+                            <input type="checkbox">
+                            <span class="box"></span>
+                        </label>
+                    </div>
+                </td>
+                <td class="table-col-main">
+                    <span class="data-utilisateur data-title">Jean-Michel LOREMIPSUM (JML)</span>
+                </td>
+                <td class="table-col-extra">
+                    <div class="btn-group">
+                        <a role="button" href="/app_dev.php/utilisateur/modifier/105" class="btn btn-info ">
+                            {{ icone_modifier() }}
+                        </a>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="table-col-extra">
+                    <div class="checkbox2">
+                        <label>
+                            <input type="checkbox">
+                            <span class="box"></span>
+                        </label>
+                    </div>
+                </td>
+                <td class="table-col-main">
+                    <span class="data-utilisateur data-title">Cunégonde DOLORSITAMET (CDO)</span>
+                </td>
+                <td class="table-col-extra">
+                    <div class="btn-group">
+                        <a role="button" href="/app_dev.php/utilisateur/modifier/105" class="btn btn-info ">
+                            {{ icone_modifier() }}
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<h3>Layout personnalisé</h3>
+<div class="table-responsive">
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th scope="col" class="table-col-extra">
+                    <div class="checkbox2">
+                        <label>
+                            <input type="checkbox">
+                            <span class="box"></span>
+                        </label>
+                    </div>
+                </th>
+                <th scope="col" class="table-col-main col-xs-3">
+                    <div class="sortable">
+                        <span class="first-name">Prénom</span> <span class="last-name">Nom</span> (Trigramme)
+                        <a href="?orderBy=prenom-ASC" title="Tri par prenom Croissant"></a>
+                    </div>
+                </th>
+                <th scope="col" class="col-xs-5">
+                    <div class="sortable">
+                        Email
+                        <a href="?orderBy=email-ASC" title="Tri par email Croissant"></a>
+                    </div>
+                </th>
+                <th scope="col" class="col-xs-3">
+                    <div class="sortable">
+                        Fonction
+                        <a href="?orderBy=fonction-ASC" title="Tri par fonction Croissant"></a>
+                    </div>
+                </th>
+                <th scope="col" class="col-xs-1">
+                    <div class="sortable">
+                        Dernière connexion
+                        <a href="?orderBy=lastLogin-ASC" title="Tri par lastLogin Croissant"></a>
+                    </div>
+                </th>
+                <th scope="col" class="table-col-extra"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="table-col-extra">
+                    <div class="checkbox2">
+                        <label>
+                            <input type="checkbox">
+                            <span class="box"></span>
+                        </label>
+                    </div>
+                </td>
+                <td class="table-col-main">
+                    <span class="data-utilisateur data-title">Jean-Michel LOREMIPSUM (JML)</span>
+                </td>
+                <td>
+                    <span class="data-email">jm.loremipsum@masprovence.com</span>
+                </td>
+                <td>
+                    <span class="data-fonction">responsable_commercial</span>
+                </td>
+                <td>
+                    <span class="data-datetime">19/09/2016 14:41:38</span>
+                </td>
+                <td class="table-col-extra">
+                    <div class="btn-group">
+                        <a role="button" href="/app_dev.php/utilisateur/modifier/105" class="btn btn-info ">
+                            {{ icone_modifier() }}
+                        </a>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="table-col-extra">
+                    <div class="checkbox2">
+                        <label>
+                            <input type="checkbox">
+                            <span class="box"></span>
+                        </label>
+                    </div>
+                </td>
+                <td class="table-col-main">
+                    <span class="data-utilisateur data-title">Cunégonde DOLORSITAMET (CDO)</span>
+                </td>
+                <td>
+                    <span class="data-email">c.dolorsitamet@masprovence.com</span>
+                </td>
+                <td>
+                    <span class="data-fonction">responsable_communication</span>
+                </td>
+                <td>
+                    <span class="data-datetime">21/09/2016 09:52:56</span>
+                </td>
+                <td class="table-col-extra">
+                    <div class="btn-group">
+                        <a role="button" href="/app_dev.php/utilisateur/modifier/105" class="btn btn-info ">
+                            {{ icone_modifier() }}
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<h3>Tableau multi-niveaux</h3>
+<div class="table-responsive">
+    <table class="table table-hover table-layout-1">
+        <thead>
+            <tr>
+                <th scope="col" class="table-col-extra">
+                    <div class="checkbox2">
+                        <label>
+                            <input type="checkbox">
+                            <span class="box"></span>
+                        </label>
+                    </div>
+                </th>
+                <th scope="col" class="table-col-main">Intitulé</th>
+                <th scope="col" class="table-col-extra"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="table-level-1">
+                <td class="table-col-extra">
+                    <div class="checkbox2">
+                        <label>
+                            <input type="checkbox">
+                            <span class="box"></span>
+                        </label>
+                    </div>
+                </td>
+                <td class="table-col-main">
+                    <span class="data-offre data-title">Lorem ipsum dolor sit amet</span>
+                </td>
+                <td class="table-col-extra">
+                    <div class="btn-group">
+                        <a role="button" href="/app_dev.php/utilisateur/modifier/105" class="btn btn-info ">
+                            {{ icone_modifier() }}
+                        </a>
+                    </div>
+                </td>
+            </tr>
+            <tr class="table-level-2">
+                <td class="table-col-extra">
+                    <div class="checkbox2">
+                        <label>
+                            <input type="checkbox">
+                            <span class="box"></span>
+                        </label>
+                    </div>
+                </td>
+                <td class="table-col-main">
+                    <span class="data-offre data-title">Consectetur adipisicing elit</span>
+                </td>
+                <td class="table-col-extra">
+                    <div class="btn-group">
+                        <a role="button" href="/app_dev.php/utilisateur/modifier/105" class="btn btn-info ">
+                            {{ icone_modifier() }}
+                        </a>
+                    </div>
+                </td>
+            </tr>
+            <tr class="table-level-2">
+                <td class="table-col-extra">
+                    <div class="checkbox2">
+                        <label>
+                            <input type="checkbox">
+                            <span class="box"></span>
+                        </label>
+                    </div>
+                </td>
+                <td class="table-col-main">
+                    <span class="data-offre data-title">Nunc vestibulum</span>
+                </td>
+                <td class="table-col-extra">
+                    <div class="btn-group">
+                        <a role="button" href="/app_dev.php/utilisateur/modifier/105" class="btn btn-info ">
+                            {{ icone_modifier() }}
+                        </a>
+                    </div>
+                </td>
+            </tr>
+            <tr class="table-level-1">
+                <td class="table-col-extra">
+                    <div class="checkbox2">
+                        <label>
+                            <input type="checkbox">
+                            <span class="box"></span>
+                        </label>
+                    </div>
+                </td>
+                <td class="table-col-main">
+                    <span class="data-offre data-title">Lorem ipsum dolor sit amet</span>
+                </td>
+                <td class="table-col-extra">
+                    <div class="btn-group">
+                        <a role="button" href="/app_dev.php/utilisateur/modifier/105" class="btn btn-info ">
+                            {{ icone_modifier() }}
+                        </a>
+                    </div>
+                </td>
+            </tr>
+            <tr class="table-level-2">
+                <td class="table-col-extra">
+                    <div class="checkbox2">
+                        <label>
+                            <input type="checkbox">
+                            <span class="box"></span>
+                        </label>
+                    </div>
+                </td>
+                <td class="table-col-main">
+                    <span class="data-offre data-title">Consectetur adipisicing elit</span>
+                </td>
+                <td class="table-col-extra">
+                    <div class="btn-group">
+                        <a role="button" href="/app_dev.php/utilisateur/modifier/105" class="btn btn-info ">
+                            {{ icone_modifier() }}
+                        </a>
+                    </div>
+                </td>
+            </tr>
+            <tr class="table-level-2">
+                <td class="table-col-extra">
+                    <div class="checkbox2">
+                        <label>
+                            <input type="checkbox">
+                            <span class="box"></span>
+                        </label>
+                    </div>
+                </td>
+                <td class="table-col-main">
+                    <span class="data-offre data-title">Nunc vestibulum</span>
+                </td>
+                <td class="table-col-extra">
+                    <div class="btn-group">
+                        <a role="button" href="/app_dev.php/utilisateur/modifier/105" class="btn btn-info ">
+                            {{ icone_modifier() }}
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<h3>Tableau dépliable</h3>
+<div class="table-responsive table-advanced table-collapsible">
+    <table class="table" id="table-collapsible-1">
+        <thead>
+            <tr>
+                <th class="table-col-extra collapse-all" role="button" aria-expanded="false">
+                    {{ icone_chevron_down() }}
+                </th>
+                <th class="table-col-main">Article</th>
+                <th class="text-center">Sismique</th>
+                <th class="text-center">Niveau</th>
+                <th class="text-center">Fonction</th>
+                <th class="text-center">Notice</th>
+                <th class="table-col-extra"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="table-level-1">
+                <td class="table-col-extra">
+                    <a role="button" data-toggle="collapse" href="#row1" aria-expanded="false" aria-controls="row1">
+                        {{ icone_chevron_down() }}
+                    </a>
+                </td>
+                <td class="table-col-main"><span class="data-title">Plan détail escalier (u)</span></td>
+                <td class="text-center">* * * *</td>
+                <td class="text-center">Maçonnerie brute</td>
+                <td class="text-center">%1</td>
+                <td class="text-center">{{ icone_valider() }}</td>
+                <td class="table-col-extra">
+                    <div class="btn-group">
+                        <a role="button" href="/app_dev.php/dossier/modifier/311" class="btn btn-info ">
+                            {{ icone_modifier() }}<span class="sr-only">Modifier 201608-311</span>
+                        </a>
+                        <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="caret"></span>
+                            <span class="sr-only">Toggle Dropdown</span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/app_dev.php/dossier/attribuer/311">
+                                    {{ icone_modifier_attribution() }}<span>Attribuer</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+            <tr class="table-level-2">
+                <td colspan="7">
+                    <div class="collapse" id="row1">
+                        <table class="table">
+                            <tr>
+                                <td>LOREM IPSUM</td>
+                            </tr>
+                        </table>
+                    </div>
+                </td>
+            </tr>
+            <tr class="table-level-1">
+                <td class="table-col-extra">
+                    <a role="button" data-toggle="collapse" href="#row2" aria-expanded="false" aria-controls="row2">
+                        {{ icone_chevron_down() }}
+                    </a>
+                </td>
+                <td class="table-col-main"><span class="data-title">Plan détail escalier (u)</span></td>
+                <td class="text-center">* * * *</td>
+                <td class="text-center">Maçonnerie brute</td>
+                <td class="text-center">%1</td>
+                <td class="text-center">{{ icone_valider() }}</td>
+                <td class="table-col-extra">
+                    <div class="btn-group">
+                        <a role="button" href="/app_dev.php/dossier/modifier/311" class="btn btn-info ">
+                            {{ icone_modifier() }}<span class="sr-only">Modifier 201608-311</span>
+                        </a>
+                        <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="caret"></span>
+                            <span class="sr-only">Toggle Dropdown</span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/app_dev.php/dossier/attribuer/311">
+                                    {{ icone_modifier_attribution() }}<span>Attribuer</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+            <tr class="table-level-2">
+                <td colspan="7">
+                    <div class="collapse" id="row2">
+                        <table class="table">
+                            <tr>
+                                <td>LOREM IPSUM</td>
+                            </tr>
+                        </table>
+                    </div>
+                </td>
+            </tr>
+            <tr class="table-level-1">
+                <td class="table-col-extra">
+                    <a role="button" data-toggle="collapse" href="#row3" aria-expanded="false" aria-controls="row3">
+                        {{ icone_chevron_down() }}
+                    </a>
+                </td>
+                <td class="table-col-main col-xs-4"><span class="data-title">Plan détail escalier (u)</span></td>
+                <td class="text-center col-xs-2">* * * *</td>
+                <td class="text-center col-xs-2">Maçonnerie brute</td>
+                <td class="text-center col-xs-2">%1</td>
+                <td class="text-center col-xs-2">{{ icone_valider() }}</td>
+                <td class="table-col-extra">
+                    <div class="btn-group">
+                        <a role="button" href="/app_dev.php/dossier/modifier/311" class="btn btn-info ">
+                            {{ icone_modifier() }}<span class="sr-only">Modifier 201608-311</span>
+                        </a>
+                        <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="caret"></span>
+                            <span class="sr-only">Toggle Dropdown</span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/app_dev.php/dossier/attribuer/311">
+                                    {{ icone_modifier_attribution() }}<span>Attribuer</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+            <tr class="table-level-2">
+                <td colspan="7">
+                    <div class="collapse" id="row3">
+                        <table class="table">
+                            <tr>
+                                <td>LOREM IPSUM</td>
+                            </tr>
+                        </table>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<h3>Tableau complexe</h3>
+<div class="table-responsive table-advanced">
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th scope="col" class="mobile-hide table-col-main col-sm-4">Intitulé</th>
+                <th scope="col" class="col-xs-12 col-sm-8 table-nest">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col" colspan="4" class="col-xs-12 text-center">Groupe</th>
+                            </tr>
+                            <tr>
+                                <th scope="col" class="col-xs-3 text-center">Intitulé</th>
+                                <th scope="col" class="col-xs-3 text-center">Intitulé</th>
+                                <th scope="col" class="col-xs-3 text-center">Intitulé</th>
+                                <th scope="col" class="col-xs-3 text-center">Intitulé</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="col-xs-12 col-sm-4 table-col-main">
+                    <span class="data-title">Lorem ipsum dolor sit amet</span>
+                </td>
+                <td class="col-xs-12 col-sm-8 table-nest">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td class="col-xs-3 text-center">Consectetur</td>
+                                <td class="col-xs-3 text-center">Adipisicing</td>
+                                <td class="col-xs-3 text-center">Elit nunc</td>
+                                <td class="col-xs-3 text-center">Vestibulum</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-xs-12 col-sm-4 table-col-main">
+                    <span class="data-title">Lorem ipsum dolor sit amet</span>
+                </td>
+                <td class="col-xs-12 col-sm-8 table-nest">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td class="col-xs-3 text-center">Consectetur</td>
+                                <td class="col-xs-3 text-center">Adipisicing</td>
+                                <td class="col-xs-3 text-center">Elit nunc</td>
+                                <td class="col-xs-3 text-center">Vestibulum</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-xs-12 col-sm-4 table-col-main">
+                    <span class="data-title">Lorem ipsum dolor sit amet</span>
+                </td>
+                <td class="col-xs-12 col-sm-8 table-nest">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td class="col-xs-3 text-center">Consectetur</td>
+                                <td class="col-xs-3 text-center">Adipisicing</td>
+                                <td class="col-xs-3 text-center">Elit nunc</td>
+                                <td class="col-xs-3 text-center">Vestibulum</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>        
+    </table>
+</div>

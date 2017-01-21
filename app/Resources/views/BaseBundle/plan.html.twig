@@ -1,0 +1,39 @@
+{% extends 'layout.html.twig' %}
+
+{% block og %}
+    <meta property="og:title" content="Plan du site 4erudition"/>
+    <meta property="og:url" content="http://4erudition.fr/plan"/>
+    <meta property="og:description"
+          content="Cette page est un plan des liens existants sur ce site pour l'association 4erudition."/>
+{% endblock %}
+
+{% block keys %}4 erudition, for erudition, Trophy, erudition, 4l trophy, 4l, plan du site, plan, site, 4 érudition{% endblock %}
+
+{% block title %}Plan du site | 4Erudition{% endblock %}
+
+{% block Description %}Cette page est un plan des liens existants sur ce site pour l'association 4erudition.{% endblock %}
+
+{% block h1 %}Plan du site 4erudition{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="section">
+            <div class="row center">
+                <div class="col s12 m12 l10 offset-l1">
+                    <div class="collection">
+                        <a href="{{ path('index') }}" class="collection-item">Accueil</a>
+                        <a href="{{ path('news') }}" class="collection-item">News</a>
+                        <a href="{{ path('4l') }}" class="collection-item">Le 4L Trophy</a>
+                        <a href="{{ path('nous') }}" class="collection-item">Qui sommes nous ?</a>
+                        <a href="{{ path('soutiens') }}" class="collection-item">Nous soutenir</a>
+                        <a href="{{ path('sponsors') }}" class="collection-item">Nos sponsors</a>
+                        <a href="{{ path('contact') }}" class="collection-item">Contact</a>
+                        <a href="{{ path('mentions') }}" class="collection-item">Mentions Légales</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

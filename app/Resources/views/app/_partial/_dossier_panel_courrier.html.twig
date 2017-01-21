@@ -1,0 +1,43 @@
+{% set itemColor = 'default' %}
+{% if data.createdAt|date('Y-m-d H:i:s') > 'now'|date('Y-m-d H:i:s') %}
+    {% set itemColor = 'success' %}
+{% endif %}
+{% if data.brouillon %}
+    {% set itemColor = 'warning' %}
+{% endif %}
+
+<li class="list-group-item list-group-item-{{ itemColor }}">
+    <div class="btn-group pull-right">
+        {% if data.brouillon %}
+        <a class="btn btn-info btn-sm" href="{{ url('courrier.edit', {'id': data.dossier.id, 'courrierId': data.id}) }}">
+            {{ icone_modifier() }}
+            <span class="sr-only">{{ 'action.edit'|trans }}</span>
+        </a>
+        {% endif %}
+    </div>
+    <div class="list-group-item-heading">
+        {{ icone_creer_courrier() }}
+        {% if data.brouillon %}
+            <span class="data-title">{{ 'app.courrier.brouillon'|trans }}</span>
+        {% else %}
+            <span class="data-title">{{ data.updatedAt|localizeddate('long', 'short') }}</span>
+        {% endif %}
+        <span class="badge">{{ data.createdBy.trigramme }}</span>
+    </div>
+    <div class="list-group-item-content">
+        <div class="contacts">
+            {% for contact in data.courrierDestinataire.contact %}
+                {{ courrierDestinataire.contact.libelle }}{% if not loop.last %}, {% endif %}
+            {% endfor %}
+        </div>
+        <div class="objet text-muted">
+            {{ data.objet }}
+            {% for document in data.documents %}
+                <br />
+                <a href="{{ path('media.resource.serve', {resource: document.path}) }}" target="_blank">
+                    {{ icone_paperclip() }} {{ document.originalName }}
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+</li>

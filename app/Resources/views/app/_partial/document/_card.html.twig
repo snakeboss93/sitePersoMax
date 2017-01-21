@@ -1,0 +1,27 @@
+{% if data is defined %}
+    <div class="card">
+        <div class="card-image">
+            <a href="{{ path('media.resource.serve', {resource: data.path }) }}" target="_blank">
+                {% if data.thumbnailPath is null %}
+                    <img src="{{ asset('images/documents-'~data.extension~'.png') }}" alt="Aucune image disponible"
+                         width="400" height="267">
+                {% else %}
+                    <img src="{{ data.thumbnailPath | imagine_filter('document_pictures') }}" alt="{{ data.originalName }}"
+                         width="400" height="267">
+                {% endif %}
+                <span class="card-title">
+                    {{ data.originalName }}.{{ data.extension }}
+                </span>
+            </a>
+        </div>
+        <div class="card-content">
+            {# <div class="card-action"></div> #}
+            <div class="card-description">
+                <span class="card-description-createdAt">{{ data.createdAt|localizeddate('short', 'short') }}</span>
+            </div>
+            <div class="card-extra-action">
+                <span class="badge card-description-utilisateurAttribution">{{ data.createdBy.trigramme }}</span>
+            </div>
+        </div>
+    </div>
+{% endif %}

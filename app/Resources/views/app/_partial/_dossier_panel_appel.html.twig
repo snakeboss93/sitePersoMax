@@ -1,0 +1,39 @@
+{% set itemColor = 'default' %}
+
+<li class="list-group-item list-group-item-{{ itemColor }}">
+    <div class="btn-group pull-right">
+
+        <a class="btn btn-info btn-sm" href="{{ url('appel.edit', {'id': appel.id}) }}">
+            {{ icone_modifier() }}
+            <span class="sr-only">{{ 'action.edit'|trans }}</span>
+        </a>
+        {{ button_dropdown() }}
+        <ul class="dropdown-menu">
+            <li>
+                <a href="#" class="deleteAppelLink btn btn-danger">
+                    {{ icone_supprimer() }}
+                    <span>{{ 'action.delete'|trans }}</span>
+                </a>
+                {{ form_start(form, {'attr': {'class': 'hidden'}}) }}
+                {{ form_rest(form) }}
+                <button type="submit" class="deleteAppelButton hidden"></button>
+                {{ form_end(form) }}
+            </li>
+        </ul>
+    </div>
+    <div class="list-group-item-heading">
+        {{ icone_creer_appel() }}
+        <span class="data-title">{{ appel.dateHeure|localizeddate('long', 'short') }}</span>
+        <span class="badge">{{ appel.createdBy.trigramme|default('') }}</span>
+    </div>
+    <div class="list-group-item-content">
+        <div class="contacts">
+            {% for contact in appel.contacts %}
+                {{ contact.libelle }}{% if not loop.last %}, {% endif %}
+            {% endfor %}
+        </div>
+        <div class="resume text-muted">
+            {{ appel.resume }}
+        </div>
+    </div>
+</li>

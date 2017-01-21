@@ -1,0 +1,109 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Contact | 4Erudition{% endblock %}
+
+{% block og %}
+    <meta property="og:title" content="Comment nous contacter ? 4erudition"/>
+    <meta property="og:url" content="http://4erudition.fr/contact"/>
+    <meta property="og:description" content="Page décrivant les moyens de contacter l'association 4erudition ainsi que ses membres.
+PARDINI Maxime, Président de l'association
+PEREZ Pierre, Trésorier de l'association"/>
+{% endblock %}
+
+{% block keys %}4 erudition, for erudition, Trophy, erudition, 4l trophy, 4l, pierre, maxime, contact, 4 érudition{% endblock %}
+
+{% block Description %}
+    Page décrivant les moyens de contacter l'association 4erudition ainsi que ses membres.
+    PARDINI Maxime, Président de l'association
+    PEREZ Pierre, Trésorier de l'association{% endblock %}
+
+{% block Lcontact %}class="active"{% endblock %}
+
+{% block h1 %}Contactez nous afin d'en savoir plus sur le 4l Trophy et notre association 4 erudition{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="section">
+            <div class="row center">
+                <div class="col s12 m12 l10 offset-l1">
+                    <h2 class="center brown-text">Contact</h2>
+                    <hr/>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col s12 m6 l4 offset-m3">
+                    <div class="card">
+                        <div class="card-image">
+                            <img class="img-responsive" src="{{ asset('img/logoCarrer.png') }}"
+                                 alt="logo 4erudition">
+                            <span class="card-title brown-text">L'association</span>
+                        </div>
+                        <div class="card-content heightImgMinCard">
+                            <br/>
+                            <p class="left-align flow-text">
+                                Association 4Erudition
+                            </p>
+                            <p class="left-align">
+                                contact@4erudition.fr
+                            </p>
+                            <br/>
+                            <div class="card-action center">
+                                <a class="btn" href="{{ path('formulaire') }}">Nous contacter en ligne</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col s12 m6 l4 offset-m3">
+                    <div class="card">
+                        <div class="card-image">
+                            <img class="img-responsive" src="{{ asset('img/pierre.png') }}"
+                                 alt="photo Pierre">
+                            <span class="card-title brown-text">Pierre</span>
+                        </div>
+                        <div class="card-content heightImgMinCard">
+                            <p class="left-align flow-text">
+                                Trésorier de l'association
+                            </p>
+                            <br/><br/>
+                            <p class="left-align flow-text">
+                                Pierre PEREZ
+                            </p>
+                            <p class="left-align">
+                                pierre.perez@alumni.univ-avignon.fr
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col s12 m6 l4 offset-m3">
+                    <div class="card">
+                        <div class="card-image">
+                            <img class="img-responsive" src="{{ asset('img/max.png') }}"
+                                 alt="photo Maxime">
+                            <span class="card-title brown-text">Maxime</span>
+                        </div>
+                        <div class="card-content heightImgMinCard">
+                            <p class="left-align flow-text">
+                                Président de l'association
+                            </p>
+                            <br/><br/>
+                            <p class="left-align flow-text">
+                                Maxime PARDINI
+                            </p>
+                            <p class="left-align">
+                                pardinimaxime@gmail.com
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}
