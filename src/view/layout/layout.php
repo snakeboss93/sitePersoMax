@@ -53,7 +53,7 @@
                 <a href="?action=index">
                     <img src="images/favicon.png" height="325" width="325" class="img-logo text-center"
                          alt="logo du site">
-                    <h1 class="sr-only">ifacebook</h1>
+                    <h1 class="sr-only">maxime</h1>
                     <p class="h1">acebook</p>
                 </a>
                 <h2 class="sr-only">Navigation</h2>

@@ -1,6 +1,6 @@
 <?php
 
-namespace ifacebook\controller;
+namespace maxime\controller;
 
 use lib\core\Context;
 
@@ -17,8 +17,6 @@ class StaticPageController
      */
     public static function index($request, $context)
     {
-        MainController::toMenu($context);
-
         return Context::SUCCESS;
     }
 
@@ -30,8 +28,6 @@ class StaticPageController
      */
     public static function mentionsLegales($request, $context)
     {
-        MainController::toMenu($context);
-
         return Context::SUCCESS;
     }
 
@@ -43,8 +39,6 @@ class StaticPageController
      */
     public static function contact($request, $context)
     {
-        MainController::toMenu($context);
-
         return Context::SUCCESS;
     }
 }

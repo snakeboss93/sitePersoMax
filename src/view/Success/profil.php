@@ -1,5 +1,5 @@
 <?php
-/** @var \ifacebook\model\Utilisateur\Utilisateur $user */
+/** @var \maxime\model\Utilisateur\Utilisateur $user */
 $user = $context->__get('user');
 if ($context::getSessionAttribute('id') === $user->getId()) { ?>
     <h2 id="liste-messages-profil">Mon profil</h2>
@@ -101,7 +101,7 @@ if ($context::getSessionAttribute('id') === $user->getId()) { ?>
     <div id="receive-ajax-message"></div>
 
     <?php
-    /** @var \ifacebook\model\Message\Message $data */
+    /** @var \maxime\model\Message\Message $data */
     foreach ($context->__get('data') as $data) {
         ?>
         <div class="well">

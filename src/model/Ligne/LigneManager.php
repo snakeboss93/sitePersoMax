@@ -1,25 +1,25 @@
 <?php
 
-namespace ifacebook\model\Post;
+namespace maxime\model\Ligne;
 
 use Doctrine\ORM\EntityRepository;
-use ifacebook\model\AbstractManager;
+use maxime\model\AbstractManager;
 
 /**
- * Class PostManager
+ * Class LigneManager
  */
-class PostManager extends AbstractManager
+class LigneManager extends AbstractManager
 {
     /** @var EntityRepository $postRepository */
     protected $postRepository;
 
     /**
-     * PostManager constructor.
+     * LigneManager constructor.
      */
     public function __construct()
     {
         parent::__construct();
-        $this->postRepository = $this->em->getRepository(Post::class);
+        $this->postRepository = $this->em->getRepository(Ligne::class);
     }
 
     /**
@@ -34,7 +34,7 @@ class PostManager extends AbstractManager
     }
 
     /**
-     * @return Post|Object
+     * @return Ligne|Object
      */
     public function findOneLast()
     {
@@ -42,11 +42,11 @@ class PostManager extends AbstractManager
     }
 
     /**
-     * Renvoie un Post par son id.
+     * Renvoie un Ligne par son id.
      *
      * @param int $id
      *
-     * @return Object|Post
+     * @return Object|Ligne
      */
     public function findOneById($id)
     {

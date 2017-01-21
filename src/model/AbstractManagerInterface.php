@@ -1,11 +1,9 @@
 <?php
 
-namespace ifacebook\model;
+namespace maxime\model;
 
 /**
  * Interface AbstractManagerInterface
- *
- * @author PEREZ Pierre
  */
 interface AbstractManagerInterface
 {

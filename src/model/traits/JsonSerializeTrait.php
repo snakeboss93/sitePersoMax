@@ -1,6 +1,6 @@
 <?php
 
-namespace ifacebook\model\traits;
+namespace maxime\model\traits;
 
 use Doctrine\ORM\Mapping as ORM;
 

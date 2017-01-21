@@ -1,9 +1,9 @@
 <?php
 
-namespace ifacebook\model\Utilisateur;
+namespace maxime\model\Utilisateur;
 
 use Doctrine\ORM\EntityRepository;
-use ifacebook\model\AbstractManager;
+use maxime\model\AbstractManager;
 
 /**
  * Class utilisateurManager
@@ -55,50 +55,15 @@ class UtilisateurManager extends AbstractManager
     }
 
     /**
-     * Recherche un utilisateur par nom, prenom ou identifant.
-     * Renvoie un tableau d'Utilisateur par nom ou prenom.
-     *
-     * @param string $q
-     *
-     * @return array
-     */
-    public function findByNameOrLastName($q)
-    {
-        $qb = $this->userRepository->createQueryBuilder('u')
-            ->where('LOWER(u.nom) LIKE :nameContains')
-            ->orWhere('LOWER(u.prenom) LIKE :nameContains')
-            ->orWhere('LOWER(u.identifiant) LIKE :nameContains')
-            ->setParameter('nameContains', '%'.strtolower($q).'%');
-
-        $items = $qb->getQuery()->getResult();
-        $results = [];
-
-        /** @var Utilisateur $item */
-        foreach ($items as $item) {
-            $tmp = [];
-            $tmp['id'] = $item->getId();
-            $tmp['fullname'] = $item->getFullName();
-            $tmp['img'] = $item->getAvatar();
-            $results[] = $tmp;
-        }
-
-        return $results;
-    }
-
-    /**
      * @param $login
      * @param $pass
      *
-     * @return bool|Utilisateur
+     * @return Object|Utilisateur
      */
-    public function getUserByLoginAndPass($login, $pass)
+    public function findConnection($login, $pass)
     {
-        /** @var Utilisateur $user */
-        $user = $this->userRepository->findOneBy(['identifiant' => $login, 'pass' => sha1($pass)]);
-        if (null === $user) {
-            return false;
-        }
-
-        return $user;
+        return $this->userRepository->findOneBy(
+            ['identifiant' => $login, 'pass' => password_hash(password_hash($pass, PASSWORD_DEFAULT), PASSWORD_DEFAULT)]
+        );
     }
 }

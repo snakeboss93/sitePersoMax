@@ -1,6 +1,6 @@
 <?php
 
-namespace ifacebook\model;
+namespace maxime\model;
 
 use Doctrine\ORM\EntityManager;
 use lib\core\DbConnection;

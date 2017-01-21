@@ -1,5 +1,5 @@
 <?php
-/** @var \ifacebook\model\Utilisateur\Utilisateur $moi */
+/** @var \maxime\model\Utilisateur\Utilisateur $moi */
 $moi = $context->__get('moi');
 ?>
 <div id="menu">

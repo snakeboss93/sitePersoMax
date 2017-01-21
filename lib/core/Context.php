@@ -23,8 +23,6 @@ class Context implements JsonSerializable
     protected $layout;
     /** @var array $class */
     protected $class;
-    /** @var string $notification */
-    protected $notification;
 
     /**
      * @return Context
@@ -138,25 +136,6 @@ class Context implements JsonSerializable
     public function __set($prop, $value)
     {
         $this->data[$prop] = $value;
-    }
-
-    /**
-     * @return string
-     */
-    public function getNotification()
-    {
-        return $this->notification;
-    }
-
-    /**
-     * @param string $notification
-     * @return Context
-     */
-    public function setNotification($notification)
-    {
-        $this->notification = $notification;
-
-        return $this;
     }
 
     /**
